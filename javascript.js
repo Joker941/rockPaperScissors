@@ -24,39 +24,6 @@ function getComputerChoice() {
 //     return playerSelection;
 // }
 
-function playRound(playerSelection, computerSelection) {
-    
-    playerSelection = playerSelection.toLowerCase();
-    
-    let resultat;
-
-    if (playerSelection == "rock") {
-
-        if (computerSelection == "paper") {
-            resultat = 1;
-        } else {
-            resultat = 2;
-        }
-
-    } else if (playerSelection == "paper") {
-
-        if (computerSelection == "scissors") {
-            resultat = 3;
-        } else {
-            resultat = 4;
-        }
-
-    } else if (playerSelection == "scissors") {
-
-        if (computerSelection == "rock") {
-            resultat = 5;
-        } else {
-            resultat = 6;
-        }
-    }
-
-    return resultat;
-}
 
 function game() {
 
@@ -120,3 +87,161 @@ function game() {
     }
 }
 // game();
+
+
+// Fonctions créées pour l'UI
+
+function getComputerChoice() {
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    let choixOrdinateur = getRandomInt(3);
+
+    let rock = "rock";
+    let paper = "paper";
+    let scissors = "scissors";
+
+    if (choixOrdinateur === 0) {
+        return rock;
+    } else if (choixOrdinateur === 1) {
+        return paper;
+    } else if (choixOrdinateur === 2) {
+        return scissors;
+    }
+} 
+
+function playRound(playerSelection, computerSelection) {
+    
+    playerSelection = playerSelection.toLowerCase();
+    
+    let resultat;
+
+    if (playerSelection == "rock") {
+
+        if (computerSelection == "paper") {
+            resultat = "CW";
+        } else if (computerSelection == "scissors") {
+            resultat = "CL";
+        } else {
+            resultat = "Draw";
+        }
+
+    } else if (playerSelection == "paper") {
+
+        if (computerSelection == "scissors") {
+            resultat = "CW";
+        } else if (computerSelection == "rock") {
+            resultat = "CL";
+        } else {
+            resultat = "Draw";
+        }
+
+    } else if (playerSelection == "scissors") {
+
+        if (computerSelection == "rock") {
+            resultat = "CW";
+        } else if (computerSelection == "paper") {
+            resultat = "CL";
+        } else {
+            resultat = "Draw";
+        }
+    }
+
+    return resultat;
+}
+
+let computerPoints = 0, userPoints = 0;
+
+const buttonRock = document.querySelector(".rock");
+const buttonPaper = document.querySelector(".paper");
+const buttonScissors = document.querySelector(".scissors");
+
+buttonRock.addEventListener("click", function () {
+    
+    let computerChoice = getComputerChoice();
+
+    let result = playRound("rock", computerChoice);
+
+    if (result == "CW") {
+
+        computerPoints ++;
+
+        document.querySelector("#js_score > p").textContent = computerPoints;
+
+        document.querySelector("#recapRound > p").textContent = "You've player Rock and Javascript played Paper. You loose this one !";
+
+    } else if (result == "CL") {
+
+        userPoints ++;
+
+        document.querySelector("#user_score > p").textContent = userPoints;
+
+        document.querySelector("#recapRound > p").textContent = "You've player Rock and Javascript played Scissors. You won this one !";
+
+    } else {
+
+        document.querySelector("#recapRound > p").textContent = "You've player Rock and Javascript played Rock. It's a draw !";
+    }
+
+    console.log("Rock / " + computerChoice);
+    console.log("UP : " + userPoints + " / CP : " + computerPoints);
+
+})
+
+buttonPaper.addEventListener("click", function () {
+    
+    let computerChoice = getComputerChoice();
+
+    let result = playRound("paper", computerChoice);
+
+    if (result == "CW") {
+
+        computerPoints ++;
+
+        document.querySelector("#js_score > p").textContent = computerPoints;
+
+    } else if (result == "CL") {
+
+        userPoints ++;
+
+        document.querySelector("#user_score > p").textContent = userPoints;
+
+    } else {
+
+    }
+
+    console.log("Rock / " + computerChoice);
+    console.log("UP : " + userPoints + " / CP : " + computerPoints);
+
+})
+
+buttonScissors.addEventListener("click", function () {
+   
+    let computerChoice = getComputerChoice();
+
+    let result = playRound("scissors", computerChoice);
+
+    if (result == "CW") {
+
+        computerPoints ++;
+
+        document.querySelector("#js_score > p").textContent = computerPoints;
+
+        
+
+    } else if (result == "CL") {
+
+        userPoints ++;
+
+        document.querySelector("#user_score > p").textContent = userPoints;
+
+    } else {
+
+    }
+
+    console.log("Rock / " + computerChoice);
+    console.log("UP : " + userPoints + " / CP : " + computerPoints);
+
+})
