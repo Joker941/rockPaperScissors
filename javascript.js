@@ -160,88 +160,153 @@ const buttonScissors = document.querySelector(".scissors");
 
 buttonRock.addEventListener("click", function () {
     
-    let computerChoice = getComputerChoice();
+    if (computerPoints === 5 || userPoints === 5) {
 
-    let result = playRound("rock", computerChoice);
-
-    if (result == "CW") {
-
-        computerPoints ++;
-
-        document.querySelector("#js_score > p").textContent = computerPoints;
-
-        document.querySelector("#recapRound > p").textContent = "You've player Rock and Javascript played Paper. You loose this one !";
-
-    } else if (result == "CL") {
-
-        userPoints ++;
-
-        document.querySelector("#user_score > p").textContent = userPoints;
-
-        document.querySelector("#recapRound > p").textContent = "You've player Rock and Javascript played Scissors. You won this one !";
-
+        alert("The game is over. Refresh the page to play another game.");
     } else {
 
-        document.querySelector("#recapRound > p").textContent = "You've player Rock and Javascript played Rock. It's a draw !";
-    }
+        let computerChoice = getComputerChoice();
 
-    console.log("Rock / " + computerChoice);
-    console.log("UP : " + userPoints + " / CP : " + computerPoints);
+        let result = playRound("rock", computerChoice);
+
+        if (result == "CW") {
+
+            computerPoints ++;
+
+            document.querySelector("#js_score > p").textContent = computerPoints;
+
+            document.querySelector("#recapRound > p").textContent = "You've played Rock and Javascript played Paper. You loose this one !";
+
+            if (computerPoints === 5 ) {
+
+                let messageEndGame = document.createElement("p");
+                messageEndGame.textContent = "Too bad ! Javascript won this match ! Better luck next time...";
+                document.querySelector("#recapRound").appendChild(messageEndGame);
+
+            }
+        } else if (result == "CL") {
+
+            userPoints ++;
+
+            document.querySelector("#user_score > p").textContent = userPoints;
+
+            document.querySelector("#recapRound > p").textContent = "You've played Rock and Javascript played Scissors. You won this one !";
+
+            if (userPoints === 5) {
+
+                let messageEndGame = document.createElement("p");
+                messageEndGame.textContent = "Congratulations, you won ! Can you do it again ?";
+                document.querySelector("#recapRound").appendChild(messageEndGame);
+            }
+        } else {
+
+            document.querySelector("#recapRound > p").textContent = "You've played Rock and Javascript played Rock too. It's a draw !";
+        }
+
+    }
 
 })
 
 buttonPaper.addEventListener("click", function () {
     
-    let computerChoice = getComputerChoice();
+    if (computerPoints === 5 || userPoints === 5) {
 
-    let result = playRound("paper", computerChoice);
-
-    if (result == "CW") {
-
-        computerPoints ++;
-
-        document.querySelector("#js_score > p").textContent = computerPoints;
-
-    } else if (result == "CL") {
-
-        userPoints ++;
-
-        document.querySelector("#user_score > p").textContent = userPoints;
-
+        alert("The game is over. Refresh the page to play another game.");
     } else {
 
-    }
+        let computerChoice = getComputerChoice();
 
-    console.log("Rock / " + computerChoice);
-    console.log("UP : " + userPoints + " / CP : " + computerPoints);
+        let result = playRound("paper", computerChoice);
+
+        if (result == "CW") {
+
+            computerPoints ++;
+
+            document.querySelector("#js_score > p").textContent = computerPoints;
+
+            document.querySelector("#recapRound > p").textContent = "You've played Paper and Javascript played Scissors. You loose this one !";
+
+            if (computerPoints === 5 ) {
+
+                let messageEndGame = document.createElement("p");
+                messageEndGame.textContent = "Too bad ! Javascript won this match ! Better luck next time...";
+                document.querySelector("#recapRound").appendChild(messageEndGame);
+
+            }
+
+        } else if (result == "CL") {
+
+            userPoints ++;
+
+            document.querySelector("#user_score > p").textContent = userPoints;
+
+            document.querySelector("#recapRound > p").textContent = "You've played Paper and Javascript played Rock. You won this one !";
+
+            if (userPoints === 5) {
+
+                let messageEndGame = document.createElement("p");
+                messageEndGame.textContent = "Congratulations, you won ! Can you do it again ?";
+                document.querySelector("#recapRound").appendChild(messageEndGame);
+            }
+
+        } else {
+
+            document.querySelector("#recapRound > p").textContent = "You've played Paper and Javascript played Paper too. It's a draw !";
+
+        }
+
+    }
 
 })
 
 buttonScissors.addEventListener("click", function () {
    
-    let computerChoice = getComputerChoice();
+    if (computerPoints === 5 || userPoints === 5) {
 
-    let result = playRound("scissors", computerChoice);
-
-    if (result == "CW") {
-
-        computerPoints ++;
-
-        document.querySelector("#js_score > p").textContent = computerPoints;
-
-        
-
-    } else if (result == "CL") {
-
-        userPoints ++;
-
-        document.querySelector("#user_score > p").textContent = userPoints;
-
+        alert("The game is over. Refresh the page to play another game.");
     } else {
 
+        let computerChoice = getComputerChoice();
+
+        let result = playRound("scissors", computerChoice);
+
+        if (result == "CW") {
+
+            computerPoints ++;
+
+            document.querySelector("#js_score > p").textContent = computerPoints;
+
+            document.querySelector("#recapRound > p").textContent = "You've played Scissors and Javascript played Rock. You loose this one !";
+
+            if (computerPoints === 5 ) {
+
+                let messageEndGame = document.createElement("p");
+                messageEndGame.textContent = "Too bad ! Javascript won this match ! Better luck next time...";
+                document.querySelector("#recapRound").appendChild(messageEndGame);
+
+            }
+
+        } else if (result == "CL") {
+
+            userPoints ++;
+
+            document.querySelector("#user_score > p").textContent = userPoints;
+
+            document.querySelector("#recapRound > p").textContent = "You've played Scissors and Javascript played Paper. You won this one !";
+
+            if (userPoints === 5) {
+
+                let messageEndGame = document.createElement("p");
+                messageEndGame.textContent = "Congratulations, you won ! Can you do it again ?";
+                document.querySelector("#recapRound").appendChild(messageEndGame);
+
+            }
+
+        } else {
+
+            document.querySelector("#recapRound > p").textContent = "You've played Scissors and Javascript played Scissors too. It's a draw !";
+
+        }
+
     }
-
-    console.log("Rock / " + computerChoice);
-    console.log("UP : " + userPoints + " / CP : " + computerPoints);
-
 })
