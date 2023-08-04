@@ -158,6 +158,11 @@ const buttonRock = document.querySelector(".rock");
 const buttonPaper = document.querySelector(".paper");
 const buttonScissors = document.querySelector(".scissors");
 
+const buttonRefresh = document.querySelector(".rechargement");
+
+buttonRefresh.addEventListener("click", function () {
+    location.reload();
+})
 buttonRock.addEventListener("click", function () {
     
     if (computerPoints === 5 || userPoints === 5) {
